@@ -2,7 +2,7 @@
 {
     private static void Main(string[] args)
     {
-        function5();
+        function6();
     }
 
     static void function1()
@@ -36,19 +36,19 @@
         int y = Convert.ToInt32(Console.ReadLine());
         string quarter;
 
-        if (x>0 & y > 0)
+        if (x > 0 & y > 0)
         {
             quarter = "Top right quarter";
         }
-        else if(x > 0 & y < 0)
+        else if (x > 0 & y < 0)
         {
             quarter = "Bottom right quarter";
         }
-        else if(x < 0 & y < 0)
+        else if (x < 0 & y < 0)
         {
             quarter = "Bottom left quarter";
         }
-        else 
+        else
         {
             quarter = "Top left quarter";
         }
@@ -63,12 +63,12 @@
         int b = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine("Enter third number");
         int c = Convert.ToInt32(Console.ReadLine());
-            
+
         if (a > b & b > c)
         {
             Console.WriteLine(c + " " + b + " " + a);
         }
-        else if(a > c & c > b)
+        else if (a > c & c > b)
         {
             Console.WriteLine(b + " " + c + " " + a);
         }
@@ -96,8 +96,8 @@
         int number = Convert.ToInt32(Console.ReadLine());
         string firstWord = "";
         string secondWord = "";
-                
-        if(number / 10 ==1)
+
+        if (number / 10 == 1)
         {
             switch (number % 10)
             {
@@ -133,7 +133,8 @@
                     break;
             }
         }
-        else {
+        else
+        {
             switch (number / 10)
             {
                 case 2:
@@ -167,6 +168,9 @@
 
             switch (number % 10)
             {
+                case 0:
+                    secondWord = "";
+                    break;
                 case 1:
                     secondWord = "one";
                     break;
@@ -199,10 +203,25 @@
                     break;
             }
         }
-        
-                
         Console.WriteLine(firstWord + " " + secondWord);
     }
 
-    
+    static void function6()
+    {
+        Console.WriteLine("Enter enter X for point M");
+        double xM = Convert.ToInt32(Console.ReadLine()); 
+        Console.WriteLine("Enter enter Y for point M");
+        double yM = Convert.ToInt32(Console.ReadLine()); 
+        Console.WriteLine("Enter X of the center of the circle");
+        double x0 = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Enter Y of the center of the circle");
+        double y0 = Convert.ToInt32(Console.ReadLine());        
+        Console.WriteLine("Enter radius of the circle");
+        double r = Convert.ToInt32(Console.ReadLine());
+
+        double hypotenuse = Math.Sqrt(Math.Pow(xM-x0, 2) + Math.Pow(yM - y0, 2));
+        
+        string result = r > hypotenuse ? "Point M is inside the circle" : "Point M is outside the circle";
+        Console.WriteLine(result);
+    }
 }
