@@ -36,15 +36,15 @@
         int y = Convert.ToInt32(Console.ReadLine());
         string quarter;
 
-        if (x > 0 & y > 0)
+        if (x > 0 && y > 0)
         {
             quarter = "Top right quarter";
         }
-        else if (x > 0 & y < 0)
+        else if (x > 0 && y < 0)
         {
             quarter = "Bottom right quarter";
         }
-        else if (x < 0 & y < 0)
+        else if (x < 0 && y < 0)
         {
             quarter = "Bottom left quarter";
         }
@@ -64,27 +64,27 @@
         Console.WriteLine("Enter third number");
         int c = Convert.ToInt32(Console.ReadLine());
 
-        if (a > b & b > c)
+        if (a > b && b > c)
         {
             Console.WriteLine(c + " " + b + " " + a);
         }
-        else if (a > c & c > b)
+        else if (a > c && c > b)
         {
             Console.WriteLine(b + " " + c + " " + a);
         }
-        else if (b > a & a > c)
+        else if (b > a && a > c)
         {
             Console.WriteLine(c + " " + a + " " + b);
         }
-        else if (b > c & c > a)
+        else if (b > c && c > a)
         {
             Console.WriteLine(a + " " + c + " " + b);
         }
-        else if (c > a & a > b)
+        else if (c > a && a > b)
         {
             Console.WriteLine(b + " " + a + " " + c);
         }
-        else if (c > b & b > a)
+        else if (c > b && b > a)
         {
             Console.WriteLine(a + " " + b + " " + c);
         }
@@ -208,9 +208,9 @@
 
     static void function6()
     {
-        Console.WriteLine("Enter enter X for point M");
+        Console.WriteLine("Enter X for point M");
         double xM = Convert.ToInt32(Console.ReadLine()); 
-        Console.WriteLine("Enter enter Y for point M");
+        Console.WriteLine("Enter Y for point M");
         double yM = Convert.ToInt32(Console.ReadLine()); 
         Console.WriteLine("Enter X of the center of the circle");
         double x0 = Convert.ToInt32(Console.ReadLine());
