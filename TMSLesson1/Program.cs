@@ -4,7 +4,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        function6();
+        function10();
     }
     static void function1()
     {
@@ -105,4 +105,56 @@ internal class Program
         Console.WriteLine(currentNumber);
     }
 
+    static void function7()
+    {
+        Console.WriteLine("Enter A and B numbers");
+        int a = Convert.ToInt32(Console.ReadLine());
+        int b = Convert.ToInt32(Console.ReadLine());
+
+        while (a != 0 && b != 0)
+        {
+            if (a > b)
+            {
+                a %= b;
+            }
+            else
+            {
+                b %= a;
+            }
+        }
+        Console.WriteLine(a + b);
+    }
+
+    static void function9()
+    {
+        Console.WriteLine("Enter a number");
+        int a = Convert.ToInt32(Console.ReadLine());
+        int numberOfOddDigits = 0;
+
+        while(a /1 >=1)
+        {
+            if(a %2 != 0)
+            {
+                numberOfOddDigits++;
+            }
+            a /= 10;
+        }
+        Console.WriteLine(numberOfOddDigits);
+    }
+
+    static void function10()
+    {
+        Console.WriteLine("Enter a number");
+        int a = Convert.ToInt32(Console.ReadLine());
+        string number = "";
+
+        while (a >= 10)
+        {
+            number += a % 10;
+            a /= 10;
+        }
+
+        number += a;
+        Console.WriteLine(number);
+    }
 }
