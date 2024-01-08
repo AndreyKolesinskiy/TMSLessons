@@ -1,9 +1,13 @@
-﻿internal class Program
+﻿using System.Buffers;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
-        function8();
+        twoDFunction6();
     }
+
+    //One-Dimensional arrays
 
     static void function1()
     {
@@ -121,6 +125,122 @@
         printArray(arr);
     }
 
+    //Two-Dimensional arrays
+
+    static void twoDFunction1()
+    {
+        int[,] arr = create2DArray(4, 4);
+        print2DArray(arr);
+
+        int min = arr[0, 0];
+        for (int i = 0; i < arr.GetLength(0); i++)
+        {
+            for (int j = 0; j < arr.GetLength(1); j++)
+            {
+                if (arr[i, j] < min)
+                    min = arr[i, j];
+            }
+        }
+        Console.WriteLine("\n" + min);
+    }
+
+    static void twoDFunction2()
+    {
+        int[,] arr = create2DArray(3, 4);
+        print2DArray(arr);
+
+        int max = arr[0, 0];
+        for (int i = 0; i < arr.GetLength(0); i++)
+        {
+            for (int j = 0; j < arr.GetLength(1); j++)
+            {
+                if (arr[i, j] > max)
+                    max = arr[i, j];
+            }
+        }
+        Console.WriteLine("\n" + max);
+    }
+
+    static void twoDFunction3()
+    {
+        int[,] arr = create2DArray(3, 4);
+        print2DArray(arr);
+
+        int minIndexY = 0;
+        int minIndexX = 0;
+        for (int i = 0; i < arr.GetLength(0); i++)
+        {
+            for (int j = 0; j < arr.GetLength(1); j++)
+            {
+                if (arr[i, j] < arr[minIndexY, minIndexX])
+                {
+                    minIndexY = i;
+                    minIndexX = j;
+                }
+            }
+        }
+        Console.WriteLine("Min element index is " + $"[{minIndexY},{minIndexX}]");
+    }
+
+    static void twoDFunction4()
+    {
+        int[,] arr = create2DArray(4, 4);
+        print2DArray(arr);
+
+        int maxIndexY = 0;
+        int maxIndexX = 0;
+        for (int i = 0; i < arr.GetLength(0); i++)
+        {
+            for (int j = 0; j < arr.GetLength(1); j++)
+            {
+                if (arr[i, j] > arr[maxIndexY, maxIndexX])
+                {
+                    maxIndexY = i;
+                    maxIndexX = j;
+                }
+            }
+        }
+        Console.WriteLine("Max element index is " + $"[{maxIndexY},{maxIndexX}]");
+    }
+
+    static void twoDFunction5() // Counts only cases when element has both: right and left neighbours
+    {
+        int[,] arr = create2DArray(3, 4);
+        print2DArray(arr);
+        int numberOfElements = 0;
+
+        for(int i = 0;i < arr.GetLength(0); i++)
+        {
+            for(int j = 1;j < arr.GetLength(1) - 1; j++)
+            {
+                if (arr[i, j] > arr[i, j - 1] && arr[i, j] > arr[i, j + 1])
+                {
+                    numberOfElements++;
+                }
+            }
+        }
+        Console.WriteLine("Number of elements that are bigger than their neighbours: " + numberOfElements);
+    }
+
+    static void twoDFunction6() // Works only if array has same number of rows and columns (is a square)
+    {
+        int[,] arr = create2DArray(4, 4);
+        print2DArray(arr);
+
+        int c = 0;
+        for (int i = 0; i < arr.GetLength(0); i++)
+        {
+            for (int j = i; j < arr.GetLength(1); j++)
+            {
+                c = arr[i, j];
+                arr[i, j] = arr[j,i];
+                arr[j, i] = c;
+            }
+        }
+        Console.WriteLine("Mirrored array");
+        print2DArray(arr);
+    }
+
 
     //Help methods
     static int[] createArray(int arraySize)
@@ -142,5 +262,36 @@
         {
             Console.Write(array[i] + ", ");
         }
+    }
+
+    static void print2DArray(int[,] arr)
+    {
+        int height = arr.GetLength(0);
+        int width = arr.GetLength(1);
+
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                Console.Write(arr[i, j] + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    static int[,] create2DArray(int arrayHeight, int arrayWidth)
+    {
+        int[,] arr = new int[arrayHeight, arrayWidth];
+        Random random = new Random();
+
+        for (int i = 0; i < arrayHeight; i++)
+        {
+            for (int j = 0; j < arrayWidth; j++)
+            {
+                arr[i, j] = random.Next(50);
+            }
+        }
+
+        return arr;
     }
 }
