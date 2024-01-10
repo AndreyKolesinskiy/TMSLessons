@@ -4,7 +4,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        twoDFunction6();
+        twoDFunction5();
     }
 
     //One-Dimensional arrays
@@ -15,7 +15,7 @@ internal class Program
         printArray(arr);
 
         int min = arr[0];
-        for (int i = 0; i < arr.Length; i++)
+        for (int i = 1; i < arr.Length; i++)
         {
             if (arr[i] < min)
                 min = arr[i];
@@ -203,19 +203,25 @@ internal class Program
         Console.WriteLine("Max element index is " + $"[{maxIndexY},{maxIndexX}]");
     }
 
-    static void twoDFunction5() // Counts only cases when element has both: right and left neighbours
+    static void twoDFunction5() // Compairs element with left, right, top and bottom neqighbours
     {
-        int[,] arr = create2DArray(3, 4);
+        int[,] arr = create2DArray(4, 4);
         print2DArray(arr);
         int numberOfElements = 0;
 
         for(int i = 0;i < arr.GetLength(0); i++)
         {
-            for(int j = 1;j < arr.GetLength(1) - 1; j++)
+            for(int j = 0;j < arr.GetLength(1); j++)
             {
-                if (arr[i, j] > arr[i, j - 1] && arr[i, j] > arr[i, j + 1])
+                int leftNeighbour = j - 1 >= 0 ? arr[i, j - 1] : 0;
+                int rightNeighbour = j + 1 <= arr.GetLength(1) - 1 ? arr[i, j + 1] : 0;
+                int topNeighbour = i - 1 >= 0 ? arr[i - 1, j] : 0;
+                int bottomNeighbour = i + 1 <= arr.GetLength(0) - 1 ? arr[i +1, j] : 0;
+
+                if (arr[i, j] > leftNeighbour && arr[i, j] > rightNeighbour && arr[i, j] > topNeighbour && arr[i, j] > bottomNeighbour)
                 {
                     numberOfElements++;
+                    Console.WriteLine(arr[i, j]);
                 }
             }
         }
