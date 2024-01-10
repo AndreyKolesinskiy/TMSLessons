@@ -4,7 +4,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        function10();
+        function5();
     }
     static void function1()
     {
@@ -29,8 +29,7 @@ internal class Program
 
         for (int i = a; i <= 1000; i += a)
         {
-            if (i % a == 0)
-                Console.WriteLine(i);
+            Console.WriteLine(i);
         }
     }
 
@@ -40,7 +39,7 @@ internal class Program
         int a = Convert.ToInt32(Console.ReadLine());
         int result = 0;
 
-        for (int i = 1; Math.Pow(i, 2) < a; i++)
+        for (int i = 1; i * i < a; i++)
         {
             result++;
         }
@@ -54,7 +53,7 @@ internal class Program
         int a = Convert.ToInt32(Console.ReadLine());
         int result = 0;
 
-        for (int i = 1; i < a; i++)
+        for (int i = 1; i <= a / 2; i++)
         {
             if (a % i == 0)
                 result = i;
@@ -68,20 +67,18 @@ internal class Program
         int a = Convert.ToInt32(Console.ReadLine());
         int b = Convert.ToInt32(Console.ReadLine());
         int result = 0;
+        int start = a;
+        int end = b;
 
-        if (a <= b)
+        if (b < a)
         {
-            for (int i = a; i <= b; i++)
-            {
-                if (i % 7 == 0) result+=i;
-            }
+            start = b;
+            end = a;
         }
-        else
+
+        for (int i = start; i <= end; i++)
         {
-            for (int i = b; i <= a; i++)
-            {
-                if (i % 7 == 0) result += i;
-            }
+            if (i % 7 == 0) result += i;
         }
 
         Console.WriteLine(result);
@@ -95,9 +92,9 @@ internal class Program
         int currentNumber = 1;
         int numberBeforePrevious = 1;
 
-        for(int i = 3; i <= a; i++)
+        for (int i = 3; i <= a; i++)
         {
-            currentNumber = previousNumber +numberBeforePrevious;
+            currentNumber = previousNumber + numberBeforePrevious;
             numberBeforePrevious = previousNumber;
             previousNumber = currentNumber;
         }
@@ -131,9 +128,9 @@ internal class Program
         int a = Convert.ToInt32(Console.ReadLine());
         int numberOfOddDigits = 0;
 
-        while(a /1 >=1)
+        while (a > 0)
         {
-            if(a %2 != 0)
+            if (a % 2 != 0)
             {
                 numberOfOddDigits++;
             }
