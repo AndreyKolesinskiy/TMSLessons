@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TMSLesson1
 {
-    abstract public class Doctor
+    abstract public class Doctor : IWorkable
     {
         public string name;
         public int visitCost;
@@ -26,6 +26,11 @@ namespace TMSLesson1
         public void PrintVisitCost()
         {
             Console.WriteLine("Your bill is: " + visitCost + "$. Please pay at the desk.");
+        }
+
+        public void Work()
+        {
+            Console.WriteLine("I'm working very hard... Please wait.");
         }
 
     }

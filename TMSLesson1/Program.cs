@@ -52,6 +52,7 @@ internal class Program
         {
             if (doctor.id == doctorId)
             {
+                doctor.Work();
                 doctor.Treat();
                 doctor.PrintVisitCost();
             }
