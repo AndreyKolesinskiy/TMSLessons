@@ -5,12 +5,12 @@ internal class Program
     private static void Main(string[] args)
     {
         //This program lets user to select needed specialist and get treatment through the terminal
-        Dentist tom = new Dentist("Tom", 5, "Intern", 23);
-        Dentist bill = new Dentist("Bill", 20, "First category", 17);
-        Therapist garry = new Therapist("Garry", 15, "Highest category", 91);
-        Therapist john = new Therapist("John", 35, "Professor", 65);
-        Surgeon sam = new Surgeon("Sam", 20, "Highest category", 31);
-        Surgeon nick = new Surgeon("Nick", 35, "Professor", 77);
+        Dentist tom = new Dentist("Tom", (int)Values.HourCost.Intern, "Intern", 23);
+        Dentist bill = new Dentist("Bill", (int)Values.HourCost.FirstCategory, "First category", 17);
+        Therapist garry = new Therapist("Garry", (int)Values.HourCost.HighestCategory, "Highest category", 91);
+        Therapist john = new Therapist("John", (int)Values.HourCost.Professor, "Professor", 65);
+        Surgeon sam = new Surgeon("Sam", (int)Values.HourCost.HighestCategory, "Highest category", 31);
+        Surgeon nick = new Surgeon("Nick", (int)Values.HourCost.Professor, "Professor", 77);
 
         List<Doctor> doctors = new List<Doctor>();
         doctors.Add(tom);
