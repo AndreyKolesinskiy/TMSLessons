@@ -21,7 +21,7 @@ namespace TMSLesson1
             [1] = "Intern",
             [2] = "First category",
             [3] = "Highest category",
-            [4] = "Professor",
+            [4] = "Professor"
         };
     }
 }
