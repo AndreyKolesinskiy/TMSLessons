@@ -8,11 +8,11 @@ internal class Program
         Square darkBlueSquare = new Square(2, "Dark Blue");
         Square lightBlueSquare = new Square(15, "Light Blue");
 
-        greenSquare.printInfoAboutSquare();
-        darkBlueSquare.printInfoAboutSquare();
-        lightBlueSquare.printInfoAboutSquare();
-        greenSquare.sideSize = darkBlueSquare.sideSize * 3;
+        greenSquare.PrintInfoAboutSquare();
+        darkBlueSquare.PrintInfoAboutSquare();
+        lightBlueSquare.PrintInfoAboutSquare();
+        greenSquare.setSideSize(darkBlueSquare.getSideSize() *3);
 
-        greenSquare.printInfoAboutSquare();
+        greenSquare.PrintInfoAboutSquare();
     }
 }

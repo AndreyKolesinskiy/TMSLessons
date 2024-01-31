@@ -9,28 +9,38 @@ namespace TMSLesson1
 {
     internal class Square
     {
-        public int sideSize;
-        public string squareColor;
-        public int squareSpace;
+        private int sideSize;
+        private string squareColor;
+        private int squareSpace;
 
-        public Square(int sideSize, string squareColor) 
+        public Square(int sideSize, string squareColor)
         {
             this.sideSize = sideSize;
             this.squareColor = squareColor;
-            calculateSquareSpace(sideSize);
+            CalculateSquareSpace(sideSize);
         }
 
-        public int calculateSquareSpace(int sideSize)
+        public int CalculateSquareSpace(int sideSize)
         {
-             return squareSpace = sideSize*sideSize;
+            return squareSpace = sideSize * sideSize;
         }
 
-        public void printInfoAboutSquare()
+        public void PrintInfoAboutSquare()
         {
             Console.WriteLine("Side size is " + sideSize);
             Console.WriteLine("Square color is " + squareColor);
-            Console.WriteLine("Square space is " + calculateSquareSpace(sideSize));
+            Console.WriteLine("Square space is " + CalculateSquareSpace(sideSize));
             Console.WriteLine();
+        }
+
+        public int getSideSize()
+        {
+            return sideSize;
+        }
+        
+        public void setSideSize(int sideSize)
+        {
+            this.sideSize = sideSize;
         }
     }
 }
