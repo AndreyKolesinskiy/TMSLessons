@@ -1,7 +1,10 @@
-﻿using TMSLesson1;
+﻿using System.Numerics;
+using TMSLesson1;
 
 internal class Program
 {
+    public delegate void SayGoodbye();
+    public static event SayGoodbye DoctorSayGoodbye;
     private static void Main(string[] args)
     {
         //This program lets user to select needed specialist and get treatment through the terminal
@@ -36,26 +39,44 @@ internal class Program
             requestedDoctorType = "Surgeon";
         }
 
-        foreach (Doctor doctor in doctors)
+        List<Doctor> requestedDoctors = doctors.Where(a => a.GetSpecilaization().Equals(requestedDoctorType)).ToList();
+        foreach (Doctor doctor in requestedDoctors)
         {
-            if (doctor.GetSpecilaization() == requestedDoctorType)
-            {
-                Console.WriteLine(doctor.GetSpecilaization() + " " + doctor.name + " - " + doctor.qualification + "(id:" + doctor.id +
+            Console.WriteLine(doctor.GetSpecilaization() + " " + doctor.name + " - " + doctor.qualification + "(id:" + doctor.id +
                     "). Cost of the visit is: " + doctor.visitCost + "$");
-            }
         }
 
-        Console.WriteLine("Please enter id of the doctor");
-        int doctorId = Convert.ToInt32(Console.ReadLine());
+        int doctorId = 0;
+        while (doctorId == 0)
+        {
+            Console.WriteLine("Please enter id of the doctor");
+            try
+            {
+                doctorId = Convert.ToInt32(Console.ReadLine());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Entered id is not an integer");
+            }
+        }
 
         foreach (Doctor doctor in doctors)
         {
             if (doctor.id == doctorId)
             {
-                doctor.Work();
+
                 doctor.Treat();
+                doctor.Work();
                 doctor.PrintVisitCost();
             }
         }
+
+        // All doctors of the clicnic say Goodbye to the patient
+        foreach (Doctor doctor in doctors)
+        {
+            DoctorSayGoodbye += doctor.SayGoodbye;
+        }
+        DoctorSayGoodbye.Invoke();
     }
 }

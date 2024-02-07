@@ -33,5 +33,9 @@ namespace TMSLesson1
             Console.WriteLine("I'm working very hard... Please wait.");
         }
 
+        public void SayGoodbye()
+        {
+            Console.WriteLine("Doctor "+ name + ": Goodbye dear patient. Please, come again.");
+        }
     }
 }
