@@ -23,6 +23,23 @@ internal class Program
         doctors.Add(sam);
         doctors.Add(nick);
 
+        Cabinet<Dentist> tomCabinet = new Cabinet<Dentist>(tom, 101);
+        Cabinet<Dentist> billCabinet = new Cabinet<Dentist>(tom, 102);
+        Cabinet<Therapist> garryCabinet = new Cabinet<Therapist>(garry, 103);
+        Cabinet<Therapist> johnCabinet = new Cabinet<Therapist>(john, 104);
+        Cabinet<Surgeon> samCabinet = new Cabinet<Surgeon>(sam, 106);
+        Cabinet<Surgeon> nickCabinet = new Cabinet<Surgeon>(nick, 106);
+
+        List<Cabinet<Dentist>> dentistCabinets = new List<Cabinet<Dentist>>();
+        dentistCabinets.Add(tomCabinet);
+        dentistCabinets.Add(billCabinet);
+        List<Cabinet<Therapist>> therapistCabinets = new List<Cabinet<Therapist>>();
+        therapistCabinets.Add(garryCabinet);
+        therapistCabinets.Add(johnCabinet);
+        List<Cabinet<Surgeon>> surgeonCabinets = new List<Cabinet<Surgeon>>();
+        surgeonCabinets.Add(samCabinet);
+        surgeonCabinets.Add(nickCabinet);
+
         Console.WriteLine("Hi, where do you fill pain: head, teeth, back. Please enter answer");
         string painArea = Console.ReadLine();
         string requestedDoctorType = "";
@@ -61,16 +78,25 @@ internal class Program
             }
         }
 
-        foreach (Doctor doctor in doctors)
-        {
-            if (doctor.id == doctorId)
-            {
+        var selectedDoctor = doctors.Where(a=>a.id == doctorId).First();
 
-                doctor.Treat();
-                doctor.Work();
-                doctor.PrintVisitCost();
-            }
+        int doctorCabinet = 0;
+        switch (selectedDoctor.GetSpecilaization())
+        {
+            case "Dentist":
+                doctorCabinet = dentistCabinets.Where(a => a.Doctor.name == selectedDoctor.name).First().CabinetBumber;
+                break;
+            case "Therapist":
+                doctorCabinet = therapistCabinets.Where(a => a.Doctor.name == selectedDoctor.name).First().CabinetBumber;
+                break;
+            case "Surgeon":
+                doctorCabinet = surgeonCabinets.Where(a => a.Doctor.name == selectedDoctor.name).First().CabinetBumber;
+                break;
         }
+        Console.WriteLine("Cabinet number is: " + doctorCabinet);
+        selectedDoctor.Treat();
+        selectedDoctor.Work();
+        selectedDoctor.PrintVisitCost();
 
         // All doctors of the clicnic say Goodbye to the patient
         foreach (Doctor doctor in doctors)
