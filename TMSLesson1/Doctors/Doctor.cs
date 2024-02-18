@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TMSLesson1.Interfaces;
 
-namespace TMSLesson1
+namespace TMSLesson1.Doctors
 {
     abstract public class Doctor : IWorkable
     {
@@ -35,7 +31,7 @@ namespace TMSLesson1
 
         public void SayGoodbye()
         {
-            Console.WriteLine("Doctor "+ name + ": Goodbye dear patient. Please, come again.");
+            Console.WriteLine("Doctor " + name + ": Goodbye dear patient. Please, come again.");
         }
     }
 }

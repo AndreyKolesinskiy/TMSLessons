@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TMSLesson1
+﻿namespace TMSLesson1
 {
-    internal class Cabinet<T>
+    public class Cabinet<T>
     {
         public T Doctor;
         public int CabinetBumber;

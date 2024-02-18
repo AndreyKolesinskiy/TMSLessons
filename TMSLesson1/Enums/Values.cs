@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TMSLesson1
+﻿namespace TMSLesson1.Enums
 {
-    internal static class Values
+    public static class Values
     {
         public enum HourCost
         {
