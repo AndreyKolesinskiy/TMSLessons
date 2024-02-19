@@ -20,7 +20,6 @@ namespace TMSLesson1
         public delegate void SayGoodbye();
         public static event SayGoodbye DoctorSayGoodbye;
 
-
         public void InitializeClicnic()
         {
             InitializeDoctors();
@@ -80,18 +79,18 @@ namespace TMSLesson1
 
         public string GetRequestedDoctorType()
         {
-            Console.WriteLine("Hi, where do you fill pain: head, teeth, back. Please enter answer");
+            Console.WriteLine("Hi, where do you fill pain: \n 1. Head \n 2. Teeth \n 3. Back \n Please enter number");
             string painArea = Console.ReadLine();
             requestedDoctorType = "";
-            if (painArea == "head")
+            if (painArea == "1")
             {
                 requestedDoctorType = "Therapist";
             }
-            else if (painArea == "teeth")
+            else if (painArea == "2")
             {
                 requestedDoctorType = "Dentist";
             }
-            else if (painArea == "back")
+            else if (painArea == "3")
             {
                 requestedDoctorType = "Surgeon";
             }
@@ -136,13 +135,13 @@ namespace TMSLesson1
             switch (selectedDoctor.GetSpecilaization())
             {
                 case "Dentist":
-                    doctorCabinet = dentistCabinets.Where(a => a.Doctor.name == selectedDoctor.name).First().CabinetBumber;
+                    doctorCabinet = dentistCabinets.Where(a => a.Doctor.name == selectedDoctor.name).First().CabinetNumber;
                     break;
                 case "Therapist":
-                    doctorCabinet = therapistCabinets.Where(a => a.Doctor.name == selectedDoctor.name).First().CabinetBumber;
+                    doctorCabinet = therapistCabinets.Where(a => a.Doctor.name == selectedDoctor.name).First().CabinetNumber;
                     break;
                 case "Surgeon":
-                    doctorCabinet = surgeonCabinets.Where(a => a.Doctor.name == selectedDoctor.name).First().CabinetBumber;
+                    doctorCabinet = surgeonCabinets.Where(a => a.Doctor.name == selectedDoctor.name).First().CabinetNumber;
                     break;
             }
             Console.WriteLine("Cabinet number is: " + doctorCabinet);
